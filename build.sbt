@@ -5,7 +5,7 @@ import sqlshell.build.defs._
 
 name := "SQLShell"
 
-version := "0.8.0"
+version := "0.8.1"
 
 organization := "org.clapper"
 
@@ -36,15 +36,15 @@ packageBin in Compile <<=
 // ---------------------------------------------------------------------------
 // SBT LWM
 
-seq(org.clapper.sbt.lwm.LWM.lwmSettings: _*)
+seq(LWM.settings: _*)
 
-LWM.sourceFiles in LWM.Config <++= baseDirectory { d =>
+sources in LWM.Config <++= baseDirectory map (d =>
     (d / "src" / "docs" ** "*.md").get
-}
+)
 
-LWM.sourceFiles in LWM.Config <++= baseDirectory { d => (d / "README.md").get ++
-                                                  (d / "LICENSE.md").get ++
-                                                  (d / "FAQ.md").get }
+sources in LWM.Config <++= baseDirectory map (d => 
+  (d / "README.md").get ++ (d / "LICENSE.md").get ++ (d / "FAQ.md").get
+)
 
 LWM.targetDirectory in LWM.Config <<= baseDirectory(_ / "target" / "docs")
 
@@ -62,7 +62,7 @@ doc in Compile <<= (doc in Compile).dependsOn(
 // ---------------------------------------------------------------------------
 // IzPack
 
-seq(org.clapper.sbt.izpack.IzPack.izPackSettings: _*)
+seq(IzPack.settings: _*)
 
 IzPack.installSourceDir in IzPack.Config <<=
   baseDirectory(_ / "src" / "main" / "izpack")
@@ -89,27 +89,27 @@ IzPack.createXML in IzPack.Config <<=
 // ---------------------------------------------------------------------------
 // Pamflet
 
-seq(org.clapper.sbt.pamflet.PamfletPlugin.pamfletSettings: _*)
+//seq(org.clapper.sbt.pamflet.PamfletPlugin.pamfletSettings: _*)
 
-sourceDirectories in Pamflet <<= baseDirectory(bd => 
-  Seq(bd / "src" / "docs" / "users-guide")
-)
+//sourceDirectories in Pamflet <<= baseDirectory(bd => 
+//  Seq(bd / "src" / "docs" / "users-guide")
+//)
 
-logLevel in Pamflet := Level.Debug
+//logLevel in Pamflet := Level.Debug
 
 // Force an edit of the pamflet template properties file, to substitute
 // variables.
 
-generate in Pamflet <<= (generate in Pamflet).dependsOn(
-  EditSource.edit in EditSource.Config
-)
+//generate in Pamflet <<= (generate in Pamflet).dependsOn(
+//  EditSource.edit in EditSource.Config
+//)
 
 // ---------------------------------------------------------------------------
 // Edit Source settings. Only used to preprocess Pamflet stuff.
 
-seq(org.clapper.sbt.editsource.EditSource.editSourceSettings: _*)
+seq(EditSource.settings: _*)
 
-EditSource.sourceFiles in EditSource.Config <+= baseDirectory(
+sources in EditSource.Config <+= baseDirectory map (
     _ / "src" / "docs" / "pamflet-template.properties"
 )
 
@@ -128,9 +128,9 @@ EditSource.variables in EditSource.Config <+=
 // Other dependendencies
 
 libraryDependencies ++= Seq(
-    "jline" % "jline" % "0.9.94",
-    "org.clapper" %% "grizzled-scala" % "1.0.9",
-    "org.clapper" %% "argot" % "0.3.5",
+    "jline" % "jline" % "2.6",
+    "org.clapper" %% "grizzled-scala" % "1.0.12",
+    "org.clapper" %% "argot" % "0.3.8",
     "org.joda" % "joda-convert" % "1.1",
     "joda-time" % "joda-time" % "2.0",
     "org.scala-tools.time" %% "time" % "0.5",
@@ -138,17 +138,3 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies <+= scalaVersion("org.scala-lang" % "scala-library" % _)
-
-// ---------------------------------------------------------------------------
-// Publishing criteria
-
-publishTo <<= version {(v: String) =>
-    val nexus = "http://nexus.scala-tools.org/content/repositories/"
-    if (v.trim.endsWith("SNAPSHOT")) Some("snapshots" at nexus + "snapshots/") 
-    else                             Some("releases"  at nexus + "releases/")
-}
-
-publishMavenStyle := true
-
-credentials += Credentials(Path.userHome / "src" / "mystuff" / "scala" /
-                           "nexus.scala-tools.org.properties")

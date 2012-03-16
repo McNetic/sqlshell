@@ -1,0 +1,4 @@
+* Updated Grizzled Scala dependency, to fix an NPE arising from a
+  `scala.MatchError`.
+* Updated all plugin dependencies.
+* Upgraded to SBT 0.11.2
