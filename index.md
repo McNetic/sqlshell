@@ -105,6 +105,32 @@ via the binary graphical installer.
 
 If you're of a mind to do so, you can also peruse the [change log][].
 
+## Reporting Bugs
+
+If you encounter a bug in SQLShell, freel free to open an issue on the
+[issues page][]. In the issue, please include:
+
+* The affected version of SQLShell, which appears in the banner when you
+  first start SQLShell.
+* The operating system you're using (Windows 7, Linux, Mac OS X, etc.)
+* The version of Java installed on your system. (Type `java -version` at a
+  command prompt.)
+* The type of database you're attempting to use, if applicable (e.g., MySQL,
+  SQL Server, Oracle, PostgreSQL, etc.)
+* The JDBC driver you're using, if there's more than one choice. (For instance,
+  if you're using SQL Server, are you using the JetDirect driver or the 
+  Microsoft driver?)
+
+In addition, enable SQLShell stack traces, as show below; if SQLShell dumps
+a stack trace, please include it in the issue.
+
+**Enabling stack traces**
+
+To enable stack traces, set the SQLShell `stacktrace` variable:
+
+    db> .set stacktrace on
+
+
 ## Copyright and License
 
 SQLShell is copyright &copy; 2009-2010 [Brian M. Clapper][] is released
@@ -135,3 +161,4 @@ request. Along with any patch you send:
 [license]: license.html
 [Brian M. Clapper]: mailto:bmc@clapper.org
 [change log]: CHANGELOG.html
+[issues page]: https://github.com/bmc/sqlshell/issues
