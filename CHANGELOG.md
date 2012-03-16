@@ -3,6 +3,13 @@ title: SQLShell Change Log
 layout: default
 ---
 
+Version 0.8.1:
+
+* Updated Grizzled Scala dependency, to fix an NPE arising from a
+  `scala.MatchError`.
+* Updated all plugin dependencies.
+* Upgraded to SBT 0.11.2
+
 Version 0.8.0:
 
 * "exit" and Ctrl-D no longer spit out an "Error: Aborted" message.
