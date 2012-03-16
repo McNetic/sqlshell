@@ -133,7 +133,7 @@ To enable stack traces, set the SQLShell `stacktrace` variable:
 
 ## Copyright and License
 
-SQLShell is copyright &copy; 2009-2010 [Brian M. Clapper][] is released
+SQLShell is copyright &copy; 2009-2012 [Brian M. Clapper][] is released
 under a [BSD license][license]. See the accompanying [license][] file.
 
 ## Patches

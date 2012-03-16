@@ -13,7 +13,7 @@ Licenses
 This software is released under a BSD license, adapted from
 <http://opensource.org/licenses/bsd-license.php>
 
-Copyright &copy; 2009-2010 Brian M. Clapper.
+Copyright &copy; 2009-2012 Brian M. Clapper.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -85,7 +85,7 @@ copyright &copy; 1998-2001 Bernhard Bablok.
 
 SQLShell ships with the [Java EditLine][javaeditline] library, a JNI
 wrapper around the BSD [Editline][editline] library. Java EditLine is released
-under a BSD-style license and is copyright &copy; 2010 Brian M. Clapper.
+under a BSD-style license and is copyright &copy; 2010-2012 Brian M. Clapper.
 
 [javaeditline]: http://software.clapper.org/java/javaeditline/
 [editline]: http://www.thrysoee.dk/editline/
@@ -102,7 +102,7 @@ BSD-style license and is copyright &copy; 2002-2006, Marc Prud'hommeaux.
 ### Grizzled Scala Library
 
 SQLShell ships with the [Grizzled Scala][grizzled-scala] library, which is
-licensed under a BSD-style license and is copyright &copy; 2009-2010
+licensed under a BSD-style license and is copyright &copy; 2009-2012
 Brian M. Clapper.
 
 [grizzled-scala]: http://software.clapper.org/scala/grizzled-scala/
