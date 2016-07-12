@@ -1,6 +1,9 @@
 SQLShell: A SQL Command Shell
 =============================
 
+**Warning**: While this project isn't [abandonware](https://en.wikipedia.org/wiki/Abandonware),
+exactly, I don't use it much any more, so it doesn't get a lot of maintenance love.
+
 Introduction
 ------------
 

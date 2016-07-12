@@ -5,11 +5,11 @@ import sqlshell.build.defs._
 
 name := "SQLShell"
 
-version := "0.8.1"
+version := "0.8.2"
 
 organization := "org.clapper"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.9.2"
 
 // ---------------------------------------------------------------------------
 // Additional compiler options and plugins
@@ -42,7 +42,7 @@ sources in LWM.Config <++= baseDirectory map (d =>
     (d / "src" / "docs" ** "*.md").get
 )
 
-sources in LWM.Config <++= baseDirectory map (d => 
+sources in LWM.Config <++= baseDirectory map (d =>
   (d / "README.md").get ++ (d / "LICENSE.md").get ++ (d / "FAQ.md").get
 )
 
@@ -79,7 +79,7 @@ IzPack.variables in IzPack.Config <++= baseDirectory {bd =>
 
 IzPack.variables in IzPack.Config <+=
   (baseDirectory, scalaVersion, version) { (bd, sv, v) =>
-  ("sqlshellJar", (bd / "target" / ("scala_" + sv) / 
+  ("sqlshellJar", (bd / "target" / ("scala_" + sv) /
                    ("sqlshell_%s-%s.jar" format (sv, v))).toString)
 }
 
@@ -91,7 +91,7 @@ IzPack.createXML in IzPack.Config <<=
 
 //seq(org.clapper.sbt.pamflet.PamfletPlugin.pamfletSettings: _*)
 
-//sourceDirectories in Pamflet <<= baseDirectory(bd => 
+//sourceDirectories in Pamflet <<= baseDirectory(bd =>
 //  Seq(bd / "src" / "docs" / "users-guide")
 //)
 
@@ -121,7 +121,7 @@ EditSource.flatten in EditSource.Config := true
 
 EditSource.variables in EditSource.Config <+= name {name => ("name", name)}
 
-EditSource.variables in EditSource.Config <+= 
+EditSource.variables in EditSource.Config <+=
   version {version => ("version", version)}
 
 // ---------------------------------------------------------------------------
@@ -129,7 +129,7 @@ EditSource.variables in EditSource.Config <+=
 
 libraryDependencies ++= Seq(
     "jline" % "jline" % "2.6",
-    "org.clapper" %% "grizzled-scala" % "1.0.12",
+    "org.clapper" %% "grizzled-scala" % "1.0.13",
     "org.clapper" %% "argot" % "0.3.8",
     "org.joda" % "joda-convert" % "1.1",
     "joda-time" % "joda-time" % "2.0",

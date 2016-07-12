@@ -54,18 +54,18 @@ if NOT "%HOME%"=="" set SQLSHELL_SCALA_OPTS=%SQLSHELL_SCALA_OPTS% -Duser.home="%
 
 set _TOOL_CLASSPATH=
 if "%_TOOL_CLASSPATH%"=="" (
-  for %%f in ("$INSTALL_PATH\lib\*") do call :add_cpath "%%f"
+  for %%f in ("C:\Users\bmc\sqlshell\lib\*") do call :add_cpath "%%f"
   if "%OS%"=="Windows_NT" (
-    for /d %%f in ("$INSTALL_PATH\lib\*") do call :add_cpath "%%f"
+    for /d %%f in ("C:\Users\bmc\sqlshell\lib\*") do call :add_cpath "%%f"
   )
 )
 
 if NOT "%CLASSPATH%" == "" call :add_cpath "%CLASSPATH%"
 
-if "%SCALA_HOME%" == "" (
-    @echo "SCALA_HOME is not set"
-    goto end
-)
+rem if "%SCALA_HOME%" == "" (
+rem    @echo "SCALA_HOME is not set"
+rem    goto end
+rem )
 
 java -cp "%_TOOL_CLASSPATH%" %SQLSHELL_SCALA_OPTS% org.clapper.sqlshell.tool.Tool %1 %2 %3 %4 %5 %6 %7 %8 %9
 goto end
